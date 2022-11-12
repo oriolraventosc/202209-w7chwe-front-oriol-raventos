@@ -12,7 +12,7 @@ describe("Given a usersReducer", () => {
       const initialState = userInitialState;
       const expectedState = {
         username: "paco",
-        password: "paco2",
+        token: "paco2",
         isLogged: true,
       };
 
