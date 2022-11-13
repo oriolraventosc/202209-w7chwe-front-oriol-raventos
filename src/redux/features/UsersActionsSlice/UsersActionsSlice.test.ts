@@ -10,7 +10,14 @@ describe("Given a usersActionsReducer", () => {
     test("Then it should receive a list of users", () => {
       const action = getUsersActionCreator(usersMock);
       const expectedState = {
-        users: usersMock,
+        users: {
+          "0": {
+            email: "juan@gmail.com",
+            id: "44",
+            image: "juan.jpg",
+            username: "juan",
+          },
+        },
       };
 
       const newState = usersActionsReducer(usersInitialState, action);
