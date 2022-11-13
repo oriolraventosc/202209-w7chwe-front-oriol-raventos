@@ -1,7 +1,7 @@
 const userMock = {
   username: "paco",
   password: "paco2",
-  token: "",
+  accesstoken: "",
 };
 
 export default userMock;
