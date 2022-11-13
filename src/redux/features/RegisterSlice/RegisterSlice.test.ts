@@ -1,10 +1,5 @@
 import UserJuanMock from "../../../mocks/UserJuanMock";
-import userMock from "../../../mocks/userMock";
-import {
-  userRegisterActionCreator,
-  userInitialState,
-  registerReducer,
-} from "./RegisterSlice";
+import { userRegisterActionCreator, registerReducer } from "./RegisterSlice";
 
 describe("Given a registerReducer", () => {
   describe("When it is invoked with userRegister", () => {

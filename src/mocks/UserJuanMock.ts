@@ -1,5 +1,3 @@
-import User from "../types";
-
 const UserJuanMock = {
   username: "juan",
   password: "juan",
