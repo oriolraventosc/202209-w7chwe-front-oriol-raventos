@@ -6,10 +6,15 @@ const Homepage = (): JSX.Element => {
     <>
       <Header />
       <div className="page-header">
-        <span className="page-header__subtitle">
+        <span
+          className="page-header__subtitle"
+          aria-label="In search of new friends or enemies"
+        >
           In search of new friends or enemies
         </span>
-        <span className="page-header__title">Discover new people</span>
+        <span className="page-header__title" aria-label="Discover new people">
+          Discover new people
+        </span>
       </div>
       <UsersList />
     </>
