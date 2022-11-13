@@ -21,20 +21,4 @@ describe("Given a useApi hook", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
-
-  describe("When it is invoked with the method userLogin", () => {
-    test.only("Then it should return the token", async () => {
-      const {
-        result: {
-          current: { userLogin },
-        },
-      } = renderHook(() => useAPI(), {
-        wrapper: ProviderWrapper,
-      });
-
-      await userLogin({ username: "Mars", password: "mars" });
-
-      expect(dispatch).toHaveBeenCalled();
-    });
-  });
 });
