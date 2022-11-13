@@ -1,4 +1,5 @@
 import User from "../../types";
+import UserCardStyled from "./UserCardStyled";
 
 interface UserCardProps {
   users: User;
@@ -7,11 +8,15 @@ interface UserCardProps {
 const UserCard = ({ users }: UserCardProps): JSX.Element => {
   const { username, email, image } = users;
   return (
-    <div>
+    <UserCardStyled className="user-card">
       <img src={image} alt={username} />
-      <h2>{username}</h2>
-      <span aria-label="email">{email}</span>
-    </div>
+      <div className="user-info">
+        <h2 className="user-info__username">{username}</h2>
+        <span className="user-info__email" aria-label="email">
+          {email}
+        </span>
+      </div>
+    </UserCardStyled>
   );
 };
 export default UserCard;

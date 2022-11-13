@@ -2,6 +2,7 @@ import useAPI from "../../hook/useAPI";
 import { useEffect } from "react";
 import { useAppSelector } from "../../redux/hooks";
 import UserCard from "../UserCard/UserCard";
+import UsersListStyled from "./UsersListStyled";
 
 const UsersList = (): JSX.Element => {
   const users = useAppSelector(({ usersActions }) => usersActions.users);
@@ -10,13 +11,13 @@ const UsersList = (): JSX.Element => {
     getAllUsers();
   }, [getAllUsers]);
   return (
-    <ul>
+    <UsersListStyled className="list">
       {users.map((user, index) => (
-        <li key={index}>
+        <li className="list__item" key={index}>
           <UserCard users={user} />
         </li>
       ))}
-    </ul>
+    </UsersListStyled>
   );
 };
 
