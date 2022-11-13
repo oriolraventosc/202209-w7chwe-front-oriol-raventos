@@ -8,6 +8,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <div className="page-header">
+        <span className="page-header__title">Discover new people</span>
+      </div>
       <UsersList />
     </div>
   );
