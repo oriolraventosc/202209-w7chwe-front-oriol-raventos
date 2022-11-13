@@ -2,7 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface User {
   username: string;
-  password: string;
+  password?: string;
+  accesstoken: string;
 }
 
 interface UserState extends User {
@@ -12,6 +13,7 @@ interface UserState extends User {
 export const userInitialState: UserState = {
   username: "",
   password: "",
+  accesstoken: "",
   isLogged: false,
 };
 
@@ -20,7 +22,6 @@ const usersSlice = createSlice({
   initialState: userInitialState,
   reducers: {
     userLogin: (initialState, action: PayloadAction<UserState>) => ({
-      ...initialState,
       ...action.payload,
       isLogged: true,
     }),
