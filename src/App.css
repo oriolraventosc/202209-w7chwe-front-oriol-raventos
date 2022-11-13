@@ -7,6 +7,24 @@ body {
   font-family: "Roboto";
 }
 
-img {
-  max-width: 300px;
+.page-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 2%;
+}
+
+.page-header__title {
+  font-size: 3rem;
+  font-weight: bolder;
+}
+
+.page-header__subtitle {
+  color: #4787fa;
+  font-size: 1.2rem;
+  padding-bottom: 5px;
 }
