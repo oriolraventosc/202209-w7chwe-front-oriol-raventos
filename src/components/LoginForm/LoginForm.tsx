@@ -38,7 +38,7 @@ const LoginForm = (): JSX.Element => {
   return (
     <LoginFormStyled className="page-container">
       <div className="page-container__box">
-        <h2 className="page-container__box__title">Log in</h2>
+        <h2 className="page-container__box__title">Friendenemies</h2>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-container">
             <label className="form__label" htmlFor="username"></label>
