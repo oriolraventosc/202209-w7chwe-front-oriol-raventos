@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
   const intialFormData = {
@@ -27,13 +28,14 @@ const LoginForm = (): JSX.Element => {
     navigate("/users");
   };
   return (
-    <div>
-      <div>
-        <h2>Log in</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="username"></label>
+    <LoginFormStyled className="page-container">
+      <div className="page-container__box">
+        <h2 className="page-container__box__title">Log in</h2>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="form-container">
+            <label className="form__label" htmlFor="username"></label>
             <input
+              className="form__input"
               type="text"
               id="username"
               placeholder="Username"
@@ -43,8 +45,9 @@ const LoginForm = (): JSX.Element => {
             />
           </div>
           <div>
-            <label htmlFor="password"></label>
+            <label className="form__label" htmlFor="password"></label>
             <input
+              className="form__input--password"
               type="password"
               id="password"
               placeholder="Password"
@@ -53,10 +56,10 @@ const LoginForm = (): JSX.Element => {
               required
             />
           </div>
-          <button>Send</button>
+          <button className="form__button">Send</button>
         </form>
       </div>
-    </div>
+    </LoginFormStyled>
   );
 };
 
