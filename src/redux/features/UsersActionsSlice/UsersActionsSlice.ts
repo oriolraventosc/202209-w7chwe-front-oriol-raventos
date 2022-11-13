@@ -8,15 +8,19 @@ export interface Users {
   id: string;
 }
 
-export const usersInitialState = {
-  users: {},
+interface UsersState {
+  users: Users[];
+}
+
+export const usersInitialState: UsersState = {
+  users: [],
 };
 
 const usersActionsSlice = createSlice({
   name: "usersActions",
   initialState: usersInitialState,
   reducers: {
-    getUsers: (initialState, action: PayloadAction<Users>) => ({
+    getUsers: (initialState, action: PayloadAction<Users[]>) => ({
       ...initialState,
       users: { ...action.payload },
     }),
