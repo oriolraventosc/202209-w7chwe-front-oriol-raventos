@@ -1,16 +1,16 @@
 import User from "../../types";
 
 interface UserCardProps {
-  user: User;
+  users: User;
 }
 
-const UserCard = ({ user }: UserCardProps): JSX.Element => {
-  const { username, email, image } = user;
+const UserCard = ({ users }: UserCardProps): JSX.Element => {
+  const { username, email, image } = users;
   return (
     <div>
       <img src={image} alt={username} />
       <h2>{username}</h2>
-      <span>{email}</span>
+      <span aria-label="email">{email}</span>
     </div>
   );
 };
