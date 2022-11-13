@@ -1,6 +1,6 @@
 import User from "../types";
 
-const UserJuanMock: User = {
+const UserJuanMock = {
   username: "juan",
   password: "juan",
   email: "juan@gmail.com",

@@ -3,7 +3,7 @@ import {
   userLoginActionCreator,
   userInitialState,
   usersReducer,
-} from "./UsersSlice";
+} from "./LoginSlice";
 
 describe("Given a usersReducer", () => {
   describe("When it is invoked with userLogin", () => {
