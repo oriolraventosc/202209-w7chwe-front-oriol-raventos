@@ -19,17 +19,20 @@ const LoginFormStyled = styled.div`
     margin-bottom: 15px;
   }
   input {
-    height: 30px;
+    height: 35px;
     text-align: center;
+    width: 200px;
+    border: none;
+    background-color: #edf2fa;
   }
   .form__input--password {
-    height: 30px;
+    height: 35px;
     margin-bottom: 15px;
   }
   button {
     border: none;
     height: 40px;
-    width: 10.5rem;
+    width: 12.7rem;
   }
   button:hover {
     background-color: #4b58db;
