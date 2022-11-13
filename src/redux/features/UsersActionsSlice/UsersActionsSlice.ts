@@ -22,7 +22,7 @@ const usersActionsSlice = createSlice({
   reducers: {
     getUsers: (initialState, action: PayloadAction<Users[]>) => ({
       ...initialState,
-      users: { ...action.payload },
+      users: [...action.payload],
     }),
   },
 });

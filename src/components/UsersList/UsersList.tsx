@@ -4,18 +4,16 @@ import { useAppSelector } from "../../redux/hooks";
 import UserCard from "../UserCard/UserCard";
 
 const UsersList = (): JSX.Element => {
-  const users = useAppSelector(
-    (usersActions) => usersActions.usersActions.users
-  );
+  const users = useAppSelector(({ usersActions }) => usersActions.users);
   const { getAllUsers } = useAPI();
   useEffect(() => {
     getAllUsers();
-  });
+  }, [getAllUsers]);
   return (
     <ul>
       {users.map((user, index) => (
         <li key={index}>
-          <UserCard user={user} />
+          <UserCard users={user} />
         </li>
       ))}
     </ul>
