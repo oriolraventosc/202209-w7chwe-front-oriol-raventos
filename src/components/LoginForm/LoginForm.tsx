@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginFormStyled from "./LoginFormStyled";
+import useAPI from "../../hook/useAPI";
 
 const LoginForm = (): JSX.Element => {
   const intialFormData = {
@@ -8,6 +9,7 @@ const LoginForm = (): JSX.Element => {
     password: "",
   };
   const [initialForm, setData] = useState(intialFormData);
+  const { userLogin } = useAPI();
 
   const navigate = useNavigate();
 
@@ -24,6 +26,12 @@ const LoginForm = (): JSX.Element => {
   };
   const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
+    const formDataToSubmit = {
+      username: initialForm.username,
+      password: initialForm.password,
+    };
+
+    await userLogin(formDataToSubmit);
 
     navigate("/users");
   };
