@@ -17,7 +17,7 @@ describe("Given a LoginLandingPage", () => {
 
       const heading = screen.queryByRole("heading", {
         level: 2,
-        name: "Log in",
+        name: "Friendenemies",
       });
       const button = screen.queryByRole("button", {
         name: "Send",
