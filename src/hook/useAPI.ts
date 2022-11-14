@@ -8,7 +8,7 @@ import { JwtPayloadCustom } from "./types";
 import { userLoginActionCreator } from "../redux/features/LoginSlice/LoginSlice";
 
 const useAPI = () => {
-  const apiUrl = process.env.REACT_APP_URL;
+  const apiUrl = process.env.REACT_APP_URL!;
   const dispatch = useAppDispatch();
 
   const getAllUsers = useCallback(async () => {
@@ -24,22 +24,24 @@ const useAPI = () => {
       method: "POST",
       body: JSON.stringify(userData),
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        "Content-type": "application/json",
       },
     });
-    const responseBody = (await response.json()) as LogInUserResponse;
+    const responseBody = await response.json();
 
-    const loggedUser: JwtPayloadCustom = jwtDecode(responseBody.accesstoken);
+    const loggedUser: JwtPayloadCustom = jwtDecode(responseBody);
 
     dispatch(
       userLoginActionCreator({
         ...loggedUser,
         username: loggedUser.username,
-        accesstoken: responseBody.accesstoken,
+        accesstoken: loggedUser.accesstoken,
       })
     );
 
-    localStorage.setItem("token", responseBody.accesstoken);
+    localStorage.setItem("token", loggedUser.accesstoken);
+
+    return loggedUser;
   };
   return { getAllUsers, userLogin };
 };
