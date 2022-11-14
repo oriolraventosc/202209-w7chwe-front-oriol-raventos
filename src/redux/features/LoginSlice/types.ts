@@ -20,7 +20,12 @@ export interface UserCredentials {
 export interface UserRegisterData extends UserCredentials {
   email: string;
 }
-
+export interface UserToRegisterData {
+  username: string;
+  password: string;
+  email: string;
+  image: string;
+}
 export interface JwtCustomPayload {
   id: string;
   username: string;
