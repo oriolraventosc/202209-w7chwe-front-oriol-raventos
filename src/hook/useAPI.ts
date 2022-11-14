@@ -3,7 +3,7 @@ import { getUsersActionCreator } from "../redux/features/UsersActionsSlice/Users
 import { useAppDispatch } from "../redux/hooks";
 import jwtDecode from "jwt-decode";
 import { useCallback } from "react";
-import { LogInUserResponse, UserCredentials } from "./types";
+import { UserCredentials } from "./types";
 import { JwtPayloadCustom } from "./types";
 import { userLoginActionCreator } from "../redux/features/LoginSlice/LoginSlice";
 
