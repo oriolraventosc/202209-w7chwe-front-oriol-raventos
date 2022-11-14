@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.div`
+const RegisterFormStyled = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   .page-container__box {
-    height: 320px;
+    height: 420px;
     background-color: #4787fa;
     padding: 10px 50px;
   }
@@ -54,4 +54,4 @@ const LoginFormStyled = styled.div`
   }
 `;
 
-export default LoginFormStyled;
+export default RegisterFormStyled;

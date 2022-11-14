@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LoginFormStyled from "./LoginFormStyled";
 import useAPI from "../../hook/useAPI";
 
@@ -10,14 +10,12 @@ const LoginForm = (): JSX.Element => {
   };
   const [initialForm, setData] = useState(intialFormData);
   const { userLogin } = useAPI();
-
   const navigate = useNavigate();
 
   const handleFormChange = (
     event:
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
-      | React.ChangeEvent<HTMLSelectElement>
   ) => {
     setData({
       ...initialForm,
@@ -30,15 +28,15 @@ const LoginForm = (): JSX.Element => {
       username: initialForm.username,
       password: initialForm.password,
     };
-
-    await userLogin(formDataToSubmit);
-
-    navigate("/users");
+    const loggedUser = await userLogin(formDataToSubmit);
+    if (loggedUser) {
+      navigate("/users");
+    }
   };
   return (
     <LoginFormStyled className="page-container">
       <div className="page-container__box">
-        <h2 className="page-container__box__title">Friendenemies</h2>
+        <h2 className="page-container__box__title">Log in</h2>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-container">
             <label className="form__label" htmlFor="username"></label>
@@ -64,7 +62,13 @@ const LoginForm = (): JSX.Element => {
               required
             />
           </div>
-          <button className="form__button">Send</button>
+          <button className="form__button">Log in</button>
+          <span className="register-info">
+            Need an account?{" "}
+            <span className="form__link">
+              <Link to={"/register"}>Register here</Link>
+            </span>
+          </span>
         </form>
       </div>
     </LoginFormStyled>

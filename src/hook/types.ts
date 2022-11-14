@@ -6,6 +6,7 @@ export interface UserCredentials {
 export interface JwtPayloadCustom {
   id: string;
   username: string;
+  accesstoken: string;
 }
 
 export interface LogInUserResponse {

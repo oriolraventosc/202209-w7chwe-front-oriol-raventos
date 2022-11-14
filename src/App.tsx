@@ -4,6 +4,7 @@ import "@fontsource/roboto";
 import "./App.css";
 import LoginLandingPage from "./pages/LandingPage";
 import Homepage from "./pages/Homepage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/home" element={<LoginLandingPage />} />
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/users" element={<Homepage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </div>
   );
