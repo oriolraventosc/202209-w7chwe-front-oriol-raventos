@@ -38,7 +38,7 @@ const useAPI = () => {
       })
     );
 
-    window.localStorage.setItem("token", loggedUser.accesstoken);
+    window.localStorage.setItem("token", token);
 
     return loggedUser;
   };
