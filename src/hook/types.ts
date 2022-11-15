@@ -12,3 +12,9 @@ export interface JwtPayloadCustom {
 export interface LogInUserResponse {
   accesstoken: string;
 }
+
+export interface UserInformation {
+  username: string;
+  email: string;
+  image: string;
+}

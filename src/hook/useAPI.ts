@@ -6,9 +6,11 @@ import { useCallback } from "react";
 import { UserCredentials } from "./types";
 import { JwtPayloadCustom } from "./types";
 import { userLoginActionCreator } from "../redux/features/LoginSlice/LoginSlice";
+import User from "../types";
+import { userRegisterActionCreator } from "../redux/features/RegisterSlice/RegisterSlice";
 
 const useAPI = () => {
-  const apiUrl = process.env.REACT_APP_URL!;
+  const apiUrl = process.env.REACT_APP_URL;
   const dispatch = useAppDispatch();
 
   const getAllUsers = useCallback(async () => {
@@ -39,11 +41,23 @@ const useAPI = () => {
       })
     );
 
-    localStorage.setItem("token", loggedUser.accesstoken);
+    window.localStorage.setItem("token", loggedUser.accesstoken);
 
     return loggedUser;
   };
-  return { getAllUsers, userLogin };
+
+  const userRegister = async (registerInformation: User) => {
+    const url = `${apiUrl}users/register`;
+    await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(registerInformation),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    dispatch(userRegisterActionCreator(registerInformation));
+  };
+  return { getAllUsers, userLogin, userRegister };
 };
 
 export default useAPI;

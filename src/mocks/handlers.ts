@@ -7,8 +7,8 @@ const handlers = [
   rest.get(`${apiUrl}users/list`, async (request, response, context) => {
     return response(context.status(200), context.json(usersListMock));
   }),
-  rest.post(`${apiUrl}users/login`, async (request, response, context) => {
-    return response(context.status(200));
+  rest.post(`${apiUrl}users/register`, async (request, response, context) => {
+    return response(context.status(201));
   }),
 ];
 

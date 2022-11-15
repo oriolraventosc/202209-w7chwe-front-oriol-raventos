@@ -1,8 +1,8 @@
-import User from "../../types";
+import { UserInformation } from "../../hook/types";
 import UserCardStyled from "./UserCardStyled";
 
 interface UserCardProps {
-  users: User;
+  users: UserInformation;
 }
 
 const UserCard = ({ users }: UserCardProps): JSX.Element => {

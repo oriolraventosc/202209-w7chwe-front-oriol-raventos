@@ -21,4 +21,27 @@ describe("Given a useApi hook", () => {
       expect(dispatch).toHaveBeenCalled();
     });
   });
+
+  describe("When it is invoked with the method userRegister", () => {
+    test("Then it should register the user 'Juancho'", async () => {
+      const {
+        result: {
+          current: { userRegister },
+        },
+      } = renderHook(() => useAPI(), {
+        wrapper: ProviderWrapper,
+      });
+
+      const user = {
+        username: "Juancho",
+        password: "juancho",
+        email: "juancho@gmail.com",
+        image: "juancho.jpg",
+      };
+
+      await userRegister(user);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
 });
