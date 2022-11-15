@@ -29,14 +29,11 @@ const useAPI = () => {
         "Content-type": "application/json",
       },
     });
-    const responseBody = await response.json();
-
-    const loggedUser: JwtPayloadCustom = jwtDecode(responseBody);
-
+    const token = await response.json();
+    const loggedUser: JwtPayloadCustom = jwtDecode(token);
     dispatch(
       userLoginActionCreator({
         ...loggedUser,
-        username: loggedUser.username,
         accesstoken: loggedUser.accesstoken,
       })
     );
