@@ -10,6 +10,9 @@ const handlers = [
   rest.post(`${apiUrl}users/register`, async (request, response, context) => {
     return response(context.status(201));
   }),
+  rest.post(`${apiUrl}users/login`, async (request, response, context) => {
+    return response(context.status(201));
+  }),
 ];
 
 export default handlers;
