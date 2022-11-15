@@ -10,7 +10,6 @@ const RegisterForm = (): JSX.Element => {
     username: "",
     email: "",
     password: "",
-    image: "",
   };
   const [initialForm, setData] = useState(initialFormData);
   const { userRegister } = useAPI();
@@ -33,7 +32,6 @@ const RegisterForm = (): JSX.Element => {
       username: initialForm.username,
       email: initialForm.email,
       password: initialForm.password,
-      image: initialForm.image,
     };
 
     userRegister(formDataToSubmit);
@@ -75,18 +73,6 @@ const RegisterForm = (): JSX.Element => {
               type="email"
               id="email"
               placeholder="Email"
-              onChange={handleFormChange}
-              autoComplete="off"
-              required
-            />
-          </div>
-          <div>
-            <label className="form__label" htmlFor="Image URL"></label>
-            <input
-              className="form__input--password"
-              type="text"
-              id="Image URL"
-              placeholder="Image URL"
               onChange={handleFormChange}
               autoComplete="off"
               required
