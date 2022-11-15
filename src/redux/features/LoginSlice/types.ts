@@ -24,7 +24,6 @@ export interface UserToRegisterData {
   username: string;
   password: string;
   email: string;
-  image: string;
 }
 export interface JwtCustomPayload {
   id: string;

@@ -4,14 +4,12 @@ interface UserToRegister {
   username: string;
   password: string;
   email: string;
-  image: string;
 }
 
 export const userInitialState: UserToRegister = {
   username: "",
   password: "",
   email: "",
-  image: "",
 };
 
 const registerSlice = createSlice({
