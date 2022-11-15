@@ -6,7 +6,7 @@ const RegisterFormStyled = styled.div`
   justify-content: center;
   align-items: center;
   .page-container__box {
-    height: 420px;
+    height: 370px;
     background-color: #4787fa;
     padding: 10px 50px;
   }
