@@ -2,6 +2,7 @@ import useAPI from "./useAPI";
 import { renderHook } from "@testing-library/react";
 import { store } from "../redux/store";
 import ProviderWrapper from "../mocks/providerWrapper";
+import exp from "constants";
 
 const dispatch = jest.spyOn(store, "dispatch");
 
@@ -40,6 +41,24 @@ describe("Given a useApi hook", () => {
       };
 
       await userRegister(user);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When it is invoked with the method userLogin", () => {
+    test("Then it should call it's dispatch method", async () => {
+      const {
+        result: {
+          current: { userLogin },
+        },
+      } = renderHook(() => useAPI(), { wrapper: ProviderWrapper });
+      const user = {
+        username: "Mars",
+        password: "mars",
+      };
+
+      await userLogin(user);
 
       expect(dispatch).toHaveBeenCalled();
     });
