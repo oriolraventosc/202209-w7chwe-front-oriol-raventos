@@ -9,6 +9,7 @@ const RegisterFormStyled = styled.div`
     height: 370px;
     background-color: #4787fa;
     padding: 10px 50px;
+    padding-bottom: 50px;
   }
   h2 {
     font-size: 2rem;
@@ -51,6 +52,11 @@ const RegisterFormStyled = styled.div`
     color: #fff;
     font-weight: bold;
     text-decoration: none;
+  }
+  input[type="file"] {
+    background-color: #4787fa;
+    font-size: 15px;
+    height: 20px;
   }
 `;
 
