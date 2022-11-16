@@ -29,16 +29,17 @@ const useAPI = () => {
         "Content-type": "application/json",
       },
     });
-    const token = await response.json();
-    const loggedUser: JwtPayloadCustom = jwtDecode(token);
+    const { accessToken } = await response.json();
+
+    const loggedUser: JwtPayloadCustom = jwtDecode(accessToken);
     dispatch(
       userLoginActionCreator({
         ...loggedUser,
-        accesstoken: loggedUser.accesstoken,
+        accesstoken: accessToken,
       })
     );
 
-    window.localStorage.setItem("token", token);
+    window.localStorage.setItem("token", accessToken);
 
     return loggedUser;
   };
