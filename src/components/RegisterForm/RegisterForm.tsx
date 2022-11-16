@@ -10,6 +10,7 @@ const RegisterForm = (): JSX.Element => {
     username: "",
     email: "",
     password: "",
+    image: {} as File,
   };
   const [initialForm, setData] = useState(initialFormData);
   const { userRegister } = useAPI();
@@ -19,12 +20,23 @@ const RegisterForm = (): JSX.Element => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
+    if (event.target.id === "image") {
+      const input = event.target as HTMLInputElement;
+      const files = input.files as FileList;
+
+      setData({
+        ...initialForm,
+
+        [event.target.id]: files[0],
+      });
+      return;
+    }
+
     setData({
       ...initialForm,
       [event.target.id]: event.target.value,
     });
   };
-
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
 
@@ -32,6 +44,7 @@ const RegisterForm = (): JSX.Element => {
       username: initialForm.username,
       email: initialForm.email,
       password: initialForm.password,
+      image: initialForm.image,
     };
 
     userRegister(formDataToSubmit);
@@ -78,6 +91,18 @@ const RegisterForm = (): JSX.Element => {
               required
             />
           </div>
+          <div>
+            <label className="form__label" htmlFor="image"></label>
+            <input
+              className="form__input--password"
+              type="file"
+              id="image"
+              placeholder="Image"
+              onChange={handleFormChange}
+              autoComplete="off"
+              required
+            />
+          </div>
           <button className="form__button">Register</button>
           <span className="register-info">
             Already a user?{" "}
@@ -90,5 +115,4 @@ const RegisterForm = (): JSX.Element => {
     </RegisterFormStyled>
   );
 };
-
 export default RegisterForm;
