@@ -6,10 +6,10 @@ interface UserCardProps {
 }
 
 const UserCard = ({ users }: UserCardProps): JSX.Element => {
-  const { username, email, image } = users;
+  const { username, email, backUpImage } = users;
   return (
     <UserCardStyled className="user-card">
-      <img src={image} alt={username} />
+      <img src={backUpImage} alt={username} />
       <div className="user-info">
         <h2 className="user-info__username">{username}</h2>
         <span className="user-info__email" aria-label="email">

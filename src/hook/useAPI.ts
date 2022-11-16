@@ -8,7 +8,6 @@ import { UserCredentials } from "./types";
 import { JwtPayloadCustom } from "./types";
 import { userLoginActionCreator } from "../redux/features/LoginSlice/LoginSlice";
 import User from "../types";
-import { userRegisterActionCreator } from "../redux/features/RegisterSlice/RegisterSlice";
 
 const useAPI = () => {
   const apiUrl = process.env.REACT_APP_URL;
@@ -16,8 +15,8 @@ const useAPI = () => {
 
   const getAllUsers = useCallback(async () => {
     const url = `${apiUrl}users/list`;
-    const response = await fetch(url);
-    const apiResponse = await response.json();
+    const response = await axios.get(url);
+    const apiResponse = await response.data;
     dispatch(getUsersActionCreator(apiResponse));
   }, [apiUrl, dispatch]);
 
@@ -41,8 +40,11 @@ const useAPI = () => {
 
   const userRegister = async (registerInformation: User) => {
     const url = `${apiUrl}users/register`;
-    await axios.post(url, registerInformation);
-    dispatch(userRegisterActionCreator(registerInformation));
+    await axios.post(url, registerInformation, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
   };
   return { getAllUsers, userLogin, userRegister };
 };

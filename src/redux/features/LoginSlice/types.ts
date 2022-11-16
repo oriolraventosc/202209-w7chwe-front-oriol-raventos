@@ -24,6 +24,8 @@ export interface UserToRegisterData {
   username: string;
   password: string;
   email: string;
+  backUpImage?: File;
+  image?: File;
 }
 export interface JwtCustomPayload {
   id: string;
