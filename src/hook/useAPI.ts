@@ -1,9 +1,10 @@
 //import { UserCredentials } from "./types";
 import { getUsersActionCreator } from "../redux/features/UsersActionsSlice/UsersActionsSlice";
 import { useAppDispatch } from "../redux/hooks";
+import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useCallback } from "react";
-import { UserCredentials } from "./types";
+import { UserCredentials, PayloadLogin } from "./types";
 import { JwtPayloadCustom } from "./types";
 import { userLoginActionCreator } from "../redux/features/LoginSlice/LoginSlice";
 import User from "../types";
@@ -12,6 +13,7 @@ import { userRegisterActionCreator } from "../redux/features/RegisterSlice/Regis
 const useAPI = () => {
   const apiUrl = process.env.REACT_APP_URL;
   const dispatch = useAppDispatch();
+  const tokenStorage = localStorage.getItem("token");
 
   const getAllUsers = useCallback(async () => {
     const url = `${apiUrl}users/list`;
@@ -22,14 +24,10 @@ const useAPI = () => {
 
   const userLogin = async (userData: UserCredentials) => {
     const url = `${apiUrl}users/login`;
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-    const { accessToken } = await response.json();
+    debugger;
+    const response = await axios.post(url, userData);
+    debugger;
+    const { accessToken } = await response.data;
 
     const loggedUser: JwtPayloadCustom = jwtDecode(accessToken);
     dispatch(
@@ -46,13 +44,7 @@ const useAPI = () => {
 
   const userRegister = async (registerInformation: User) => {
     const url = `${apiUrl}users/register`;
-    await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(registerInformation),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    await axios.post(url, registerInformation);
     dispatch(userRegisterActionCreator(registerInformation));
   };
   return { getAllUsers, userLogin, userRegister };
