@@ -1,6 +1,7 @@
 //import { UserCredentials } from "./types";
 import { getUsersActionCreator } from "../redux/features/UsersActionsSlice/UsersActionsSlice";
 import { useAppDispatch } from "../redux/hooks";
+import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useCallback } from "react";
 import { UserCredentials } from "./types";
@@ -22,14 +23,8 @@ const useAPI = () => {
 
   const userLogin = async (userData: UserCredentials) => {
     const url = `${apiUrl}users/login`;
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(userData),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
-    const { accessToken } = await response.json();
+    const response = await axios.post(url, userData);
+    const { accessToken } = await response.data;
 
     const loggedUser: JwtPayloadCustom = jwtDecode(accessToken);
     dispatch(
@@ -46,13 +41,7 @@ const useAPI = () => {
 
   const userRegister = async (registerInformation: User) => {
     const url = `${apiUrl}users/register`;
-    await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(registerInformation),
-      headers: {
-        "Content-type": "application/json",
-      },
-    });
+    await axios.post(url, registerInformation);
     dispatch(userRegisterActionCreator(registerInformation));
   };
   return { getAllUsers, userLogin, userRegister };

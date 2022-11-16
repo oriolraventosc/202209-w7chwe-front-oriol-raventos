@@ -18,3 +18,7 @@ export interface UserInformation {
   email: string;
   image: string;
 }
+
+export interface PayloadLogin {
+  token: string;
+}
