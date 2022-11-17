@@ -1,11 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import RegisterFormStyled from "./RegisterFormStyled";
 import useAPI from "../../hook/useAPI";
 import { useState } from "react";
 import { UserToRegisterData } from "../../redux/features/LoginSlice/types";
 
 const RegisterForm = (): JSX.Element => {
-  const navigate = useNavigate();
   const initialFormData: UserToRegisterData = {
     username: "",
     email: "",
@@ -48,7 +47,6 @@ const RegisterForm = (): JSX.Element => {
     };
 
     userRegister(formDataToSubmit);
-    navigate("/home");
   };
   return (
     <RegisterFormStyled className="page-container">

@@ -8,10 +8,12 @@ import { UserCredentials } from "./types";
 import { JwtPayloadCustom } from "./types";
 import { userLoginActionCreator } from "../redux/features/LoginSlice/LoginSlice";
 import User from "../types";
+import { useNavigate } from "react-router-dom";
 
 const useAPI = () => {
   const apiUrl = process.env.REACT_APP_URL;
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const getAllUsers = useCallback(async () => {
     const url = `${apiUrl}users/list`;
@@ -45,6 +47,7 @@ const useAPI = () => {
         "Content-Type": "multipart/form-data",
       },
     });
+    navigate("/home");
   };
   return { getAllUsers, userLogin, userRegister };
 };
