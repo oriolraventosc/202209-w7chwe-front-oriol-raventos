@@ -52,7 +52,7 @@ const RegisterForm = (): JSX.Element => {
     <RegisterFormStyled className="page-container">
       <div className="page-container__box">
         <h2 className="page-container__box__title">Register now</h2>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} noValidate>
           <div className="form-container">
             <label className="form__label" htmlFor="username"></label>
             <input

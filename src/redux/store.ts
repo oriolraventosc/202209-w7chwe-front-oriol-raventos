@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { usersReducer } from "./features/LoginSlice/LoginSlice";
 import { registerReducer } from "./features/RegisterSlice/RegisterSlice";
+import { uiSliceReducer } from "./features/UiSlice/UiSlice";
 import { usersActionsReducer } from "./features/UsersActionsSlice/UsersActionsSlice";
 
 export const store = configureStore({
@@ -8,6 +9,7 @@ export const store = configureStore({
     userLogin: usersReducer,
     usersActions: usersActionsReducer,
     userRegister: registerReducer,
+    uiReducer: uiSliceReducer,
   },
 });
 
