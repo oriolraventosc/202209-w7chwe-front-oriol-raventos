@@ -5,6 +5,7 @@ const LoginFormStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   .page-container__box {
     height: 320px;
     background-color: #4787fa;

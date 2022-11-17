@@ -37,7 +37,7 @@ const LoginForm = (): JSX.Element => {
     <LoginFormStyled className="page-container">
       <div className="page-container__box">
         <h2 className="page-container__box__title">Log in</h2>
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit} noValidate>
           <div className="form-container">
             <label className="form__label" htmlFor="username"></label>
             <input
